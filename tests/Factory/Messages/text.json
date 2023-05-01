@@ -1,0 +1,12 @@
+{
+  "msisdn": "14155552671",
+  "to": "14155552671",
+  "messageId": "02100000FB94267A",
+  "text": "Hello world",
+  "type": "text",
+  "keyword": "HELLO",
+  "message-timestamp": "2023-05-01 12:34:56",
+  "sig": "2d5e04e5c5a5a5d5a5d5d5a5a5d5d5d5a5a5d5a5d5d5a5a5d5a5d5a5d5d5a5d",
+  "nonce": "7357",
+  "signature": "tjKlRzDp7b1OKiWnE7Q2mQ=="
+}
