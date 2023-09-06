@@ -17,6 +17,7 @@ class VonageWebhookCall extends WebhookCall
 
         return self::create([
             'name' => $config->name,
+            'exception' => null,
             'url' => $request->path(),
             'headers' => $headers,
             'payload' => $request->json()->all(),
