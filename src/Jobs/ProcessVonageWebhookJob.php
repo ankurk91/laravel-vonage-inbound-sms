@@ -6,14 +6,22 @@ namespace Ankurk91\Vonage\SMS\Inbound\Jobs;
 use Ankurk91\Vonage\SMS\Inbound\Exception\WebhookFailed;
 use Illuminate\Support\Str;
 use Spatie\WebhookClient\Jobs\ProcessWebhookJob;
+use Throwable;
+use Vonage\SMS\Webhook\InboundSMS;
 
 class ProcessVonageWebhookJob extends ProcessWebhookJob
 {
     public function handle(): void
     {
-        $message = $this->webhookCall->payload;
+        try {
+            $inboundSMS = new InboundSMS($this->webhookCall->payload);
+        } catch (Throwable $e) {
+            $this->fail($e);
 
-        $eventKey = $this->createEventKey($message['type']);
+            return;
+        }
+
+        $eventKey = $this->createEventKey($inboundSMS->getType());
 
         event("vonage-inbound-sms::$eventKey", $this->webhookCall);
 
