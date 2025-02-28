@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.0](https://github.com/ankurk91/laravel-vonage-inbound-sms/compare/1.2.0...1.3.0)
+
+* Allow Laravel 12
+* Drop Laravel 10
+
 ## [1.2.0](https://github.com/ankurk91/laravel-vonage-inbound-sms/compare/1.1.0...1.2.0)
 
 * Allow Laravel 11

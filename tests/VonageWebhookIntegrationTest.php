@@ -4,14 +4,30 @@ declare(strict_types=1);
 namespace Ankurk91\Vonage\SMS\Inbound\Tests;
 
 use Ankurk91\Vonage\SMS\Inbound\Exception\WebhookFailed;
+use Ankurk91\Vonage\SMS\Inbound\Http\Controllers\VonageWebhooksController;
+use Ankurk91\Vonage\SMS\Inbound\Jobs\ProcessVonageWebhookJob;
+use Ankurk91\Vonage\SMS\Inbound\Model\VonageWebhookCall;
 use Ankurk91\Vonage\SMS\Inbound\Tests\Factory\VonageWebhookFactory;
 use Ankurk91\Vonage\SMS\Inbound\Tests\Fixtures\TestHandlerJob;
+use Ankurk91\Vonage\SMS\Inbound\VonageSignatureValidator;
+use Ankurk91\Vonage\SMS\Inbound\VonageWebhookConfig;
+use Ankurk91\Vonage\SMS\Inbound\VonageWebhookProfile;
+use Ankurk91\Vonage\SMS\Inbound\VonageWebhooksServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Queue\Events\JobFailed;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Event;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Spatie\WebhookClient\Models\WebhookCall;
 
+#[CoversClass(WebhookFailed::class)]
+#[CoversClass(VonageWebhooksController::class)]
+#[CoversClass(ProcessVonageWebhookJob::class)]
+#[CoversClass(VonageWebhookCall::class)]
+#[CoversClass(VonageSignatureValidator::class)]
+#[CoversClass(VonageWebhookConfig::class)]
+#[CoversClass(VonageWebhookProfile::class)]
+#[CoversClass(VonageWebhooksServiceProvider::class)]
 class VonageWebhookIntegrationTest extends TestCase
 {
     use RefreshDatabase;
